@@ -10,7 +10,7 @@
         </div>
 
         <div class="panel-body">
-            <form action="{{ route('portfolio.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('pfpost.store') }}" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="title">Title</label>

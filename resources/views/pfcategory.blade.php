@@ -78,18 +78,18 @@
                         <div class="single-blog blog-style-2 mb-60 wow fadeInUp" data-wow-delay=".2s"
                              style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
                             <div class="blog-img">
-                                <a href="{{ route('portfolio.single', ['slug' => $post->slug ]) }}">
-                                    <img src="{{asset( $post->featured)}}" >
+                                <a href="{{ route('portfolio.single', ['slug' => $portfolio->slug ]) }}">
+                                    <img src="{{asset( $portfolio->featured)}}" >
                                 </a>
                             </div>
                             <div class="blog-content">
 
                                 <div class="blog-meta">
                                     <a href="{{ route('portfolio.single', ['slug' => $portfolio->slug ]) }}"> </a>
-                                    <span class="date"><i class="lni lni-calendar"></i> {{ $post->created_at->toFormattedDateString() }}</span>
+                                    <span class="date"><i class="lni lni-calendar"></i> {{ $portfolio->created_at->toFormattedDateString() }}</span>
                                     <span class="category"><i class="lni lni-folder"></i> <a
-                                            href="{{ route('category.single', ['id' => $category->id ]) }}">{{ $portfolio->pfcategory->name }}</a> </span>
-                                    <span class="category"><i class="lni lni-user"></i> {{ $post->user->name }} </span>
+                                            href="{{ route('category.single', ['id' => $pfcategory->id ]) }}">{{ $portfolio->pfcategory->name }}</a> </span>
+                                    <span class="category"><i class="lni lni-user"></i> {{ $portfolio->user->name }} </span>
                                 </div>
 
 
@@ -113,7 +113,7 @@
                         <ul>
                             @foreach($categories as $category)
                                 <li>
-                                    <a href="{{ route('category.single', ['id' => $category->id ]) }}">{{ $category->name }}</a>
+                                    <a href="{{ route('pfcategory.single', ['id' => $category->id ]) }}">{{ $pfcategory->name }}</a>
                                 </li>
                             @endforeach
                         </ul>
@@ -178,11 +178,7 @@
 <script src="{{ asset('app/js/main.js')}}"></script>
 <script src="{{ asset('js/toastr.min.js') }}"></script>
 
-<script>
-    @if(Session::has('subscribed'))
-    toastr.success("{{ Session::get('subscribed') }}");
-    @endif
-</script>
+
 </body>
 </html>
 

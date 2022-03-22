@@ -1,17 +1,5 @@
 <header class="header bg-white navbar-area">
-    <div class="container">
-        @if (count($errors) > 0)
-            @foreach ($errors->all() as $error)
-                <div class="alert alert-danger">
-                    {{ $error }}
-                </div>
-            @endforeach
-        @endif
-        @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
+   @include('includes.contactsInfo')
         <div class="row align-items-center">
             <div class="col-lg-12">
                 <nav class="navbar navbar-expand-lg">

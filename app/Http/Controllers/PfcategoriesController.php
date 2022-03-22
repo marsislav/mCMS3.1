@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Session;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Pfcategory;
+use App\PfCategory;
 
 class PfcategoriesController extends Controller
 {
@@ -16,7 +16,7 @@ class PfcategoriesController extends Controller
      */
     public function index()
     {
-        return view('admin.pfcategories.index')->with('pfcategories', Pfcategory::all());
+        return view('admin.pfcategories.index')->with('pfcategories', PfCategory::all());
     }
 
     /**
@@ -40,7 +40,7 @@ class PfcategoriesController extends Controller
         $this->validate($request, [
             'name'=>'required'
         ]);
-        $pfcategory=new Pfcategory;
+        $pfcategory=new PfCategory;
         $pfcategory->name=$request->name;
         $pfcategory->save();
         Session::flash('success', 'You successfully create the portfolio category.');
@@ -66,7 +66,7 @@ class PfcategoriesController extends Controller
      */
     public function edit($id)
     {
-        $pfcategory = Pfcategory::find($id);
+        $pfcategory = PfCategory::find($id);
 
         return view('admin.pfcategories.edit')->with('pfcategory', $pfcategory);
     }
@@ -80,7 +80,7 @@ class PfcategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $pfcategory = Pfcategory::find($id);
+        $pfcategory = PfCategory::find($id);
 
         $pfcategory->name = $request->name;
 
@@ -100,14 +100,14 @@ class PfcategoriesController extends Controller
     public function destroy($id)
     {
 
-        $pfcategory = Pfcategory::find($id);
+        $pfcategory = PfCategory::find($id);
 
         if ($pfcategory->pfcategories->count()>0) {
             Session::flash('info', 'ERROR! Category cannot be deleted because it has some portfolio items!!!.');
             return redirect()->back();
         }
 
-        foreach($pfcategory->portfolios as $portfolio){
+        foreach($pfcategory->pfposts as $pfpost){
             $portfolio->forceDelete();
         }
 

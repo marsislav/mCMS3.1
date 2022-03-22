@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="d-flex justify-content-end mb-2">
-        <a href="{{ route('post.create') }}" class="btn btn-success">Add Portfolio item</a>
+        <a href="{{ route('pfpost.create') }}" class="btn btn-success">Add Portfolio item</a>
     </div>
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -26,17 +26,17 @@
                 </thead>
 
                 <tbody>
-                @if($portfolios->count() > 0)
-                    @foreach($portfolios as $portfolio)
+                @if($pfposts->count() > 0)
+                    @foreach($pfposts as $pfpost)
                         <tr>
-                            <td><img src="{{ $portfolio->featured }}" alt="{{ $portfolio->title }}" width="90px" height="50px"></td>
-                            <td>{{ $portfolio->title }}</td>
+                            <td><img src="{{ $pfpost->featured }}" alt="{{ $pfpost->title }}" width="90px" height="50px"></td>
+                            <td>{{ $pfpost->title }}</td>
                             <td>
-                                <a href="{{ route('portfolio.edit', ['id' => $portfolio->id]) }}" class="btn btn-xs btn-info">Edit</a>
+                                <a href="{{ route('pfpost.edit', ['id' => $pfpost->id]) }}" class="btn btn-xs btn-info">Edit</a>
                             </td>
 
                             <td>
-                                <a href="{{ route('portfolio.delete', ['id' => $portfolio->id]) }}" class="btn btn-xs btn-danger">Trash</a>
+                                <a href="{{ route('pfpost.delete', ['id' => $pfpost->id]) }}" class="btn btn-xs btn-danger">Trash</a>
                             </td>
                         </tr>
                     @endforeach

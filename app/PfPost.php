@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Portfolio extends Model
+class PfPost extends Model
 {
     use SoftDeletes;
 
@@ -19,6 +19,6 @@ class Portfolio extends Model
 
 
     public function pfcategory() {
-        return $this->belongsTo('App\Pfcategory');
+        return $this->belongsTo('App\PfCategory');
     }
 }

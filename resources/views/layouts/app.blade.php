@@ -118,10 +118,10 @@
                             </li>
 
                             <li class="list-group-item">
-                                <a href="{{ route('portfolio.create') }}">Create Portfolio item</a>
+                                <a href="{{ route('pfpost.create') }}">Create Portfolio item</a>
                             </li>
                             <li class="list-group-item">
-                                <a href="{{ route('portfolios') }}">All Portfolio items</a>
+                                <a href="{{ route('pfposts') }}">All Portfolio items</a>
                             </li>
 
                             <li class="list-group-item">
@@ -149,7 +149,7 @@
                                 <a href="{{ route('posts.trashed') }}">All trashed posts</a>
                             </li>
                             <li class="list-group-item">
-                                <a href="{{ route('portfolios.trashed') }}">All trashed portfolio items</a>
+                                <a href="{{ route('pfposts.trashed') }}">All trashed portfolio items</a>
                             </li>
                         </ul>
                     </div>

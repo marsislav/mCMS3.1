@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Pfcategory;
-use App\Portfolio;
+use App\PfCategory;
+use App\PfPost;
 use Session;
 
-class PortfoliosController extends Controller
+class PfPostsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class PortfoliosController extends Controller
      */
     public function index()
     {
-        return view('admin.portfolios.index')->with('portfolios', Portfolio::all());
+        return view('admin.pfposts.index')->with('pfposts', PfPost::all());
     }
 
     /**
@@ -27,7 +27,8 @@ class PortfoliosController extends Controller
      */
     public function create()
     {
-        return view('admin.portfolios.create')->with('pfcategories', Pfcategory::all());
+        return view('admin.pfposts.create')->with('pfcategories', Pfcategory::all());
+        //return view('admin.pfposts.create')->with('pfcategories', $pfcategories);
 
     }
 
@@ -50,12 +51,12 @@ class PortfoliosController extends Controller
 
         $featured_new_name = time().$featured->getClientOriginalName();
 
-        $featured->move('uploads/portfolio', $featured_new_name);
+        $featured->move('/uploads/portfolio', $featured_new_name);
 
-        $portfolio = Portfolio::create([
+        $pfpost = PfPost::create([
             'title' => $request->title,
             'content' => $request->content,
-            'featured' => 'uploads/portfolio/' . $featured_new_name,
+            'featured' => '/uploads/portfolio/' . $featured_new_name,
             'pfcategory_id' => $request->pfcategory_id,
             'slug' => str_slug($request->title),
         ]);
@@ -87,9 +88,9 @@ class PortfoliosController extends Controller
      */
     public function edit($id)
     {
-        $portfolio = Portfolio::find($id);
+        $pfpost = PfPost::find($id);
 
-        return view('admin.portfolios.edit')->with('portfolio', $portfolio)
+        return view('admin.pfposts.edit')->with('pfpost', $pfpost)
             ->with('pfcategories', Pfcategory::all());
     }
 
@@ -108,7 +109,7 @@ class PortfoliosController extends Controller
             'pfcategory_id' => 'required'
         ]);
 
-        $portfolio = Portfolio::find($id);
+        $pfpost = PfPost::find($id);
 
         if($request->hasFile('featured'))
         {
@@ -122,16 +123,16 @@ class PortfoliosController extends Controller
 
         }
 
-        $portfolio->title = $request->title;
-        $portfolio->content = $request->content;
-        $portfolio->pfcategory_id = $request->pfcategory_id;
+        $pfpost->title = $request->title;
+        $pfpost->content = $request->content;
+        $pfpost->pfcategory_id = $request->pfcategory_id;
 
-        $portfolio->save();
+        $pfpost->save();
 
 
         Session::flash('success', 'Portfolio item updated successfully.');
 
-        return redirect()->route('portfolios');
+        return redirect()->route('pfposts');
     }
 
     /**
@@ -142,9 +143,9 @@ class PortfoliosController extends Controller
      */
     public function destroy($id)
     {
-        $portfolio = Portfolio::find($id);
+        $pfpost = PfPost::find($id);
 
-        $portfolio->delete();
+        $pfpost->delete();
 
         Session::flash('success', 'The portfolio item was just trashed.');
 
@@ -152,16 +153,16 @@ class PortfoliosController extends Controller
     }
 
     public function trashed() {
-        $portfolios = Portfolio::onlyTrashed()->get();
+        $pfposts = PfPost::onlyTrashed()->get();
 
-        return view('admin.portfolios.trashed')->with('portfolios', $portfolios);
+        return view('admin.pfposts.trashed')->with('pfposts', $pfposts);
     }
 
     public function kill($id)
     {
-        $portfolio = Portfolio::withTrashed()->where('id', $id)->first();
+        $pfpost = PfPost::withTrashed()->where('id', $id)->first();
 
-        $portfolio->forceDelete();
+        $pfpost->forceDelete();
 
         Session::flash('success', 'Portfolio item deleted permanently.');
 
@@ -170,12 +171,12 @@ class PortfoliosController extends Controller
 
     public function restore($id)
     {
-        $portfolio = Portfolio::withTrashed()->where('id', $id)->first();
+        $pfpost = PfPost::withTrashed()->where('id', $id)->first();
 
-        $portfolio->restore();
+        $pfpost->restore();
 
         Session::flash('success', 'Portfolio item restored successfully.');
 
-        return redirect()->route('portfolios');
+        return redirect()->route('pfposts');
     }
 }
