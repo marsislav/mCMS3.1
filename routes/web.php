@@ -40,9 +40,9 @@ Route::get('/post/{slug}', [
     'uses' => 'FrontEndController@singlePost',
     'as' => 'post.single'
 ]);
-Route::get('/portfolio/{slug}', [
+Route::get('/pfpost/{slug}', [
     'uses' => 'FrontEndController@singlePfPost',
-    'as' => 'portfolio.single'
+    'as' => 'pfpost.single'
 ]);
 
 Route::get('/category/{id}', [
@@ -50,7 +50,7 @@ Route::get('/category/{id}', [
     'as' => 'category.single'
 ]);
 
-Route::get('/portfolio/{id}', [
+Route::get('/pfcategory/{id}', [
     'uses' => 'FrontEndController@pfcategory',
     'as' => 'pfcategory.single'
 ]);

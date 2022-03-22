@@ -39,7 +39,7 @@
 
 
 <!--header-->
-@include('includes.header')
+
 <!--/header-->
 
 <section class="page-banner-section pt-75 pb-75 img-bg" style="background-image: url({{ asset('app/img/bg/common-bg.jpg')}})">
@@ -52,7 +52,7 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item" aria-current="page">Category </li>
-                                <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('pfcategory.single', ['id' => $portfolio->pfcategory->id ]) }}">{{$pfpost->pfcategory->name}}</a></li>
+                                <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('pfcategory.single', ['id' => $pfpost->pfcategory->id ]) }}">{{$pfpost->pfcategory->name}}</a></li>
                             </ol>
                         </nav>
                     </div>
@@ -96,7 +96,7 @@
 
                 </div>
             </div>
-            @include('includes.sidebar')
+           
         </div>
 
 </section>

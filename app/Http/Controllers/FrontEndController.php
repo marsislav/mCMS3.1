@@ -8,7 +8,7 @@ use App\PfPost;
 use App\Page;
 use App\Setting;
 use App\Category;
-use App\Pfcategory;
+use App\PfCategory;
 use Illuminate\Http\Request;
 
 class FrontEndController extends Controller
@@ -18,7 +18,7 @@ class FrontEndController extends Controller
         return view('index')
                 ->with('title', Setting::first()->site_name)
                 ->with('categories', Category::take(5)->get())
-                ->with('pfcategories', Pfcategory::take(1)->get())
+                ->with('pfcategories', PfCategory::take(5)->get())
                 ->with('pfposts', PfPost::orderBy('created_at', 'DESC')->paginate(4))
                 ->with('tags', Tag::all())
                 ->with('pages', Page::orderBy('position', 'asc')->take(5)->get())
@@ -46,40 +46,50 @@ class FrontEndController extends Controller
     }
 
 
-    public function singlePfPost($slug)
-    {
-        $pfpost = PfPost::where('slug', $slug)->first();
-
-
-
-        return view('portfolio')->with('pfpost', $pfpost)
-                            ->with('title', $pfpost->title)
-                            ->with('pfcategories', PfCategory::take(1)->get())
-                            ->with('pfposts', PfPost::orderBy('created_at', 'DESC')->paginate(4));
-    }
+   
 
 
     public function category($id)
     {
         $category = Category::find($id);
 
+
         return view('category')->with('category', $category)
                             ->with('title', $category->name)
                             ->with('settings', Setting::first())
                             ->with('categories', Category::take(5)->get())
                             ->with('pages', Page::take(5)->get());
+
     }
 
     public function pfcategory($id)
     {
-        $pfcategory = Pfcategory::find($id);
+        $pfcategory = PfCategory::find($id);
 
         return view('pfcategory')->with('pfcategory', $pfcategory)
             ->with('title', $pfcategory->name)
             ->with('settings', Setting::first())
-            ->with('pfcategories', Pfcategory::take(5)->get())
+            ->with('pfcategories', PfCategory::take(5)->get())
+            
             ->with('pages', Page::take(5)->get());
     }
+
+
+
+    public function singlePfPost($slug)
+    {
+        $pfpost = PfPost::where('slug', $slug)->first();
+
+         
+
+        return view('portfolio')->with('pfpost', $pfpost)
+                           ->with('title', $pfpost->title)
+                            ->with('pfcategories', PfCategory::take(5)->get())
+                            ->with('pfposts', PfPost::orderBy('created_at', 'DESC')->paginate(4))
+                            ->with('settings', Setting::first());
+    }
+
+
 
     public function page($id)
     {

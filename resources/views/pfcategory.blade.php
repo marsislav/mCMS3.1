@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title></title>
+    <title>{{ $title }}</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/favicon.png')}}">
@@ -52,12 +52,12 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="banner-content">
-                    <h2 class="text-white">Category: </h2>
+                    <h2 class="text-white">{{ $pfcategory->name }}</h2>
                     <div class="page-breadcrumb">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item" aria-current="page">Category</li>
-                                <li class="breadcrumb-item active" aria-current="page"></li>
+                                <li class="breadcrumb-item" aria-current="page">Portfolio</li>
+                                <li class="breadcrumb-item active" aria-current="page">{{$pfcategory->name}}</li>
                             </ol>
                         </nav>
                     </div>
@@ -72,67 +72,35 @@
     <div class="container">
         <div class="row">
 
-            <div class="col-xl-8 col-lg-7">
-                @foreach($pfcategory->portfolios as $portfolio)
+                <div class="col-xl-8 col-lg-7">
+                    @foreach($pfcategory->pfposts as $pfpost)
                     <div class="left-side-wrapper">
                         <div class="single-blog blog-style-2 mb-60 wow fadeInUp" data-wow-delay=".2s"
                              style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-                            <div class="blog-img">
-                                <a href="{{ route('portfolio.single', ['slug' => $portfolio->slug ]) }}">
-                                    <img src="{{asset( $portfolio->featured)}}" >
-                                </a>
-                            </div>
-                            <div class="blog-content">
-
-                                <div class="blog-meta">
-                                    <a href="{{ route('portfolio.single', ['slug' => $portfolio->slug ]) }}"> </a>
-                                    <span class="date"><i class="lni lni-calendar"></i> {{ $portfolio->created_at->toFormattedDateString() }}</span>
-                                    <span class="category"><i class="lni lni-folder"></i> <a
-                                            href="{{ route('category.single', ['id' => $pfcategory->id ]) }}">{{ $portfolio->pfcategory->name }}</a> </span>
-                                    <span class="category"><i class="lni lni-user"></i> {{ $portfolio->user->name }} </span>
+                             <div class="row">
+                             <div class="col-xl-5"> 
+                                <div class="blog-img">
+                                    <a href="{{ route('pfpost.single', ['slug' => $pfpost->slug ]) }}">
+                                        <img src="{{asset( $pfpost->featured)}}" alt="{{ $pfpost->title }}">
+                                    </a>
                                 </div>
-
-
                             </div>
+                            <div class="col-xl-7"> 
+                                <div class="blog-content">
+                                    <a href="{{ route('pfpost.single', ['slug' => $pfpost->slug ]) }}"><h4 class="case-item__title">{{ $pfpost->title }} </h4></a>
+                                   
+                                    {!! str_limit($pfpost ->content, $limit = 150, $end = '...')!!}
+                                    </div>
+
+                                </div>
+                            </div>    
 
                         </div>
 
 
                     </div>
-                @endforeach
-            </div>
-
-            <div class="col-xl-4 col-lg-5">
-                <div class="sidebar-wrapper">
-                    <div class="sidebar-box search-form-box mb-30">
-                        @include('includes.search')
-                    </div>
-
-                    <div class="sidebar-box catagories-box mb-30">
-                        <h4>Categories</h4>
-                        <ul>
-                            @foreach($categories as $category)
-                                <li>
-                                    <a href="{{ route('pfcategory.single', ['id' => $category->id ]) }}">{{ $pfcategory->name }}</a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-
-                    <div class="sidebar-box mb-30">
-                        <h4>Follow On</h4>
-                        <div class="footer-social-links">
-                            <ul class="d-flex justify-content-start">
-                                <li><a href="javascript:void(0)"><i class="lni lni-facebook-filled"></i></a></li>
-                                <li><a href="javascript:void(0)"><i class="lni lni-twitter-filled"></i></a></li>
-                                <li><a href="javascript:void(0)"><i class="lni lni-linkedin-original"></i></a></li>
-                                <li><a href="javascript:void(0)"><i class="lni lni-instagram-filled"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
-            </div>
-
         </div>
     </div>
 </section>
@@ -178,7 +146,11 @@
 <script src="{{ asset('app/js/main.js')}}"></script>
 <script src="{{ asset('js/toastr.min.js') }}"></script>
 
-
+<script>
+    @if(Session::has('subscribed'))
+    toastr.success("{{ Session::get('subscribed') }}");
+    @endif
+</script>
 </body>
 </html>
 

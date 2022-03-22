@@ -6,15 +6,15 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            Edit portfolio item: {{ $portfolio->title }}
+            Edit portfolio item: {{ $pfpost->title }}
         </div>
 
         <div class="panel-body">
-            <form action="{{ route('portfolio.update', ['id' => $portfolio->id]) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('pfpost.update', ['id' => $pfpost->id]) }}" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="title">Title</label>
-                    <input type="text" name="title" class="form-control" value="{{ $portfolio->title }}">
+                    <input type="text" name="title" class="form-control" value="{{ $pfpost->title }}">
                 </div>
                 <div class="form-group">
                     <label for="featured">Featured image</label>
@@ -25,7 +25,7 @@
                     <select name="pfcategory_id" id="pfcategory" class="form-control">
                         @foreach($pfcategories as $pfcategory)
                             <option value="{{ $pfcategory->id }}"
-                                    @if($portfolio->pfcategory->id == $pfcategory->id)
+                                    @if($pfpost->pfcategory->id == $pfcategory->id)
                                     selected
                                 @endif
                             >{{ $pfcategory->name }}</option>
@@ -35,7 +35,7 @@
 
                 <div class="form-group">
                     <label for="content">Content</label>
-                    <textarea name="content" id="content" cols="5" rows="5" class="form-control">{{ $portfolio->content }}</textarea>
+                    <textarea name="content" id="content" cols="5" rows="5" class="form-control">{{ $pfpost->content }}</textarea>
                 </div>
 
                 <div class="form-group">
