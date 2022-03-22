@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Tag;
 use App\Post;
+use App\PfPost;
 use App\Page;
 use App\Setting;
 use App\Category;
@@ -17,7 +18,8 @@ class FrontEndController extends Controller
         return view('index')
                 ->with('title', Setting::first()->site_name)
                 ->with('categories', Category::take(5)->get())
-                //->with('pfcategories', Pfcategory::take(1)->get())
+                ->with('pfcategories', Pfcategory::take(1)->get())
+                ->with('pfposts', PfPost::orderBy('created_at', 'DESC')->paginate(4))
                 ->with('tags', Tag::all())
                 ->with('pages', Page::orderBy('position', 'asc')->take(5)->get())
                 ->with('settings', Setting::first())
@@ -42,6 +44,20 @@ class FrontEndController extends Controller
                             ->with('tags', Tag::all())
                             ->with('posts', Post::orderBy('created_at', 'DESC')->paginate(4));
     }
+
+
+    public function singlePfPost($slug)
+    {
+        $pfpost = Post::where('slug', $slug)->first();
+
+
+
+        return view('portfolio')->with('pfpost', $pfpost)
+                            ->with('title', $pfpost->title)
+                            ->with('pfcategories', PfCategory::take(1)->get())
+                            ->with('pfposts', Pfжсш ьааPost::orderBy('created_at', 'DESC')->paginate(4));
+    }
+
 
     public function category($id)
     {

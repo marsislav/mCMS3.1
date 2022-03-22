@@ -52,7 +52,7 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item" aria-current="page">Category </li>
-                                <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('pfcategory.single', ['id' => $portfolio->pfcategory->id ]) }}">{{$post->category->name}}</a></li>
+                                <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('pfcategory.single', ['id' => $portfolio->pfcategory->id ]) }}">{{$pfpost->pfcategory->name}}</a></li>
                             </ol>
                         </nav>
                     </div>
@@ -70,20 +70,20 @@
                 <div class="left-side-wrapper">
                     <div class="single-blog blog-style-2 mb-60 wow fadeInUp" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
                         <div class="blog-img">
-                            <img src="{{asset( $portfolio->featured)}}" >
+                            <img src="{{asset( $pfpost->featured)}}" >
                         </div>
                         <div class="blog-content">
 
 
 
-                            <div class="actual_content">{!! $portfolio->content !!}</div>
+                            <div class="actual_content">{!! $pfpost->content !!}</div>
                         </div>
 
                     </div>
                     <div class="blog-details-author">
 
                         <div class="blog-details-author-thumb">
-                            <img src="{{ asset($post->user->profile->avatar) }}" alt="Author">
+                           
                         </div>
 
 
@@ -142,11 +142,6 @@
 <script src="{{ asset('app/js/main.js')}}"></script>
 <script src="{{ asset('js/toastr.min.js') }}"></script>
 
-<script>
-    @if(Session::has('subscribed'))
-    toastr.success("{{ Session::get('subscribed') }}");
-    @endif
-</script>
 </body>
 </html>
 

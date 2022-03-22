@@ -41,7 +41,7 @@ Route::get('/post/{slug}', [
     'as' => 'post.single'
 ]);
 Route::get('/portfolio/{slug}', [
-    'uses' => 'FrontEndController@singlePortfolio',
+    'uses' => 'FrontEndController@singlePfPost',
     'as' => 'portfolio.single'
 ]);
 
