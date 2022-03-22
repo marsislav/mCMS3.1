@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\PfCategory;
 
-class PfcategoriesController extends Controller
+class PfCategoriesController extends Controller
 {
     /**
      * Display a listing of the resource.

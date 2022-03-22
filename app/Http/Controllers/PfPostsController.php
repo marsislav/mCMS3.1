@@ -51,12 +51,12 @@ class PfPostsController extends Controller
 
         $featured_new_name = time().$featured->getClientOriginalName();
 
-        $featured->move('/uploads/portfolio', $featured_new_name);
+        $featured->move('uploads/portfolio', $featured_new_name);
 
         $pfpost = PfPost::create([
             'title' => $request->title,
             'content' => $request->content,
-            'featured' => '/uploads/portfolio/' . $featured_new_name,
+            'featured' => 'uploads/portfolio/' . $featured_new_name,
             'pfcategory_id' => $request->pfcategory_id,
             'slug' => str_slug($request->title),
         ]);

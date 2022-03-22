@@ -118,14 +118,11 @@
                             </li>
 
                             <li class="list-group-item">
-                                <a href="{{ route('pfpost.create') }}">Create Portfolio item</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a href="{{ route('pfposts') }}">All Portfolio items</a>
+                                <a href="{{ route('pfposts') }}">Portfolio items</a>
                             </li>
 
                             <li class="list-group-item">
-                                <a href="{{ route('pfcategories') }}">Portfolio Categories</a>
+                                <a href="{{ route('pfcategories') }}">Portfolio categories</a>
                             </li>
 
                             @if (Auth::user()->admin)

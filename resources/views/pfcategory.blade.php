@@ -71,38 +71,29 @@
 <section class="blog-section pt-130">
     <div class="container">
         <div class="row">
+            @foreach($pfcategory->pfposts as $pfpost)
+                <div class="col-xl-3">
+                    <div class="row">
 
-                <div class="col-xl-8 col-lg-7">
-                    @foreach($pfcategory->pfposts as $pfpost)
-                    <div class="left-side-wrapper">
-                        <div class="single-blog blog-style-2 mb-60 wow fadeInUp" data-wow-delay=".2s"
-                             style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-                             <div class="row">
-                             <div class="col-xl-5"> 
+                        <div class="left-side-wrapper">
+                            <div class="single-blog blog-style-2 mb-60 wow fadeInUp" data-wow-delay=".2s"
+                                 style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
                                 <div class="blog-img">
                                     <a href="{{ route('pfpost.single', ['slug' => $pfpost->slug ]) }}">
                                         <img src="{{asset( $pfpost->featured)}}" alt="{{ $pfpost->title }}">
                                     </a>
                                 </div>
-                            </div>
-                            <div class="col-xl-7"> 
                                 <div class="blog-content">
-                                    <a href="{{ route('pfpost.single', ['slug' => $pfpost->slug ]) }}"><h4 class="case-item__title">{{ $pfpost->title }} </h4></a>
-                                   
+                                    <a href="{{ route('pfpost.single', ['slug' => $pfpost->slug ]) }}"><h4
+                                            class="case-item__title">{{ $pfpost->title }} </h4></a>
                                     {!! str_limit($pfpost ->content, $limit = 150, $end = '...')!!}
-                                    </div>
-
                                 </div>
-                            </div>    
-
+                            </div>
                         </div>
-
-
                     </div>
-                    @endforeach
                 </div>
+            @endforeach
         </div>
-    </div>
 </section>
 
 

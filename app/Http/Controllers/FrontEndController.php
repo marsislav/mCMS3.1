@@ -70,10 +70,8 @@ class FrontEndController extends Controller
             ->with('title', $pfcategory->name)
             ->with('settings', Setting::first())
             ->with('pfcategories', PfCategory::take(5)->get())
-            
             ->with('pages', Page::take(5)->get());
     }
-
 
 
     public function singlePfPost($slug)
@@ -86,6 +84,7 @@ class FrontEndController extends Controller
                            ->with('title', $pfpost->title)
                             ->with('pfcategories', PfCategory::take(5)->get())
                             ->with('pfposts', PfPost::orderBy('created_at', 'DESC')->paginate(4))
+                            ->with('pages', Page::take(5)->get())
                             ->with('settings', Setting::first());
     }
 

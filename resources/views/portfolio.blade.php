@@ -39,7 +39,7 @@
 
 
 <!--header-->
-
+@include('includes.header')
 <!--/header-->
 
 <section class="page-banner-section pt-75 pb-75 img-bg" style="background-image: url({{ asset('app/img/bg/common-bg.jpg')}})">
