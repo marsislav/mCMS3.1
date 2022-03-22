@@ -20,10 +20,17 @@ class CreateSettingsTable extends Migration
             $table->string('contact_email');
             $table->string('address');
             $table->text('site_info');
+            $table->string('facebook');
+            $table->string('instagram');
+            $table->string('twitter');
+            $table->string('tiktok');
+            $table->string('linkedin');
+            $table->string('vkontakte');
+            $table->string('youtube');
+            $table->string('skype');          
             $table->string('footer_text1');
             $table->string('footer_text2');
             $table->string('footer_text3');
-
             $table->timestamps();
         });
     }

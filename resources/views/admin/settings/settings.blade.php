@@ -20,6 +20,52 @@
                               <label for="site_info">About site:</label>
                               <textarea name="site_info" id="site_info" cols="30" rows="10" class="form-control" >{{ $settings->site_info }}</textarea>
                         </div>
+                        <div class="form-group">
+                              <label for="facebook">Facebook</label>
+                              <input type="text" name="facebook" class="form-control" value="{{ $settings->facebook }}">
+                        </div>
+
+                        <div class="form-group">
+                              <label for="instagram">Instagram</label>
+                              <input type="text" name="instagram" class="form-control" value="{{ $settings->instagram }}">
+                        </div>
+
+                        <div class="form-group">
+                              <label for="twitter">Twitter</label>
+                              <input type="text" name="twitter" class="form-control" value="{{ $settings->twitter }}">
+                        </div>
+
+                        <div class="form-group">
+                              <label for="tiktok">TikTok</label>
+                              <input type="text" name="tiktok" class="form-control" value="{{ $settings->tiktok }}">
+                        </div>
+
+                        <div class="form-group">
+                              <label for="linkedin">LinkedIn</label>
+                              <input type="text" name="linkedin" class="form-control" value="{{ $settings->linkedin }}">
+                        </div>
+
+                        <div class="form-group">
+                              <label for="vkontakte">VKontakte</label>
+                              <input type="text" name="vkontakte" class="form-control" value="{{ $settings->vkontakte }}">
+                        </div>
+
+
+                        <div class="form-group">
+                              <label for="youtube">Youtube</label>
+                              <input type="text" name="youtube" class="form-control" value="{{ $settings->youtube }}">
+                        </div>
+
+                        <div class="form-group">
+                              <label for="name">Skype</label>
+                              <input type="text" name="skype" class="form-control" value="{{ $settings->skype }}">
+                        </div>
+
+
+
+
+
+
 
                         <div class="form-group">
                               <label for="name">Address</label>

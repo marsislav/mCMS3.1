@@ -17,9 +17,18 @@ class SettingsTableSeeder extends Seeder
             'contact_number' => '+359 000 000 000',
             'contact_email' => 'info@example.com',
             'site_info'=> 'Sample mCMS 3.1 website',
+            'facebook'=>'',
+            'instagram'=>'',
+            'twitter'=>'',
+            'tiktok'=>'',
+            'linkedin'=>'',
+            'vkontakte'=>'',
+            'youtube'=>'',
+            'skype'=>'',
             'footer_text1'=>'Mon - Fri 09:00 - 18:00',
             'footer_text2'=>'online support',
             'footer_text3'=>'Plovdiv, Blvd. XXXXXX'
+
         ]);
     }
 }

@@ -77,23 +77,28 @@
                     <div class="left-side-wrapper">
                         <div class="single-blog blog-style-2 mb-60 wow fadeInUp" data-wow-delay=".2s"
                              style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-                            <div class="blog-img">
-                                <a href="{{ route('post.single', ['slug' => $post->slug ]) }}">
-                                    <img src="{{asset( $post->featured)}}" alt="{{ $post->title }}">
-                                </a>
-                            </div>
-                            <div class="blog-content">
-
-                                <div class="blog-meta">
-                                    <a href="{{ route('post.single', ['slug' => $post->slug ]) }}"><h6 class="case-item__title">{{ $post->title }}</h6></a>
-                                    <span class="date"><i class="lni lni-calendar"></i> {{ $post->created_at->toFormattedDateString() }}</span>
-                                    <span class="category"><i class="lni lni-folder"></i> <a
-                                            href="{{ route('category.single', ['id' => $category->id ]) }}">{{ $post->category->name }}</a> </span>
-                                    <span class="category"><i class="lni lni-user"></i> {{ $post->user->name }} </span>
+                             <div class="row">
+                             <div class="col-xl-5"> 
+                                <div class="blog-img">
+                                    <a href="{{ route('post.single', ['slug' => $post->slug ]) }}">
+                                        <img src="{{asset( $post->featured)}}" alt="{{ $post->title }}">
+                                    </a>
                                 </div>
-
-
                             </div>
+                            <div class="col-xl-7"> 
+                                <div class="blog-content">
+                                    <a href="{{ route('post.single', ['slug' => $post->slug ]) }}"><h4 class="case-item__title">{{ $post->title }} </h4></a>
+                                    <div class="blog-meta">
+                                        <span class="date"><i class="lni lni-calendar"></i> {{ $post->created_at->toFormattedDateString() }}</span>
+                                        <span class="category"><i class="lni lni-folder"></i> <a
+                                                href="{{ route('category.single', ['id' => $category->id ]) }}">{{ $post->category->name }}</a> </span>
+                                        <span class="category"><i class="lni lni-user"></i> {{ $post->user->name }} </span>
+                                    </div>
+                                    {!! str_limit($post ->content, $limit = 350, $end = '...')!!}
+                                    </div>
+
+                                </div>
+                            </div>    
 
                         </div>
 

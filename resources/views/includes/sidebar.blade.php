@@ -4,7 +4,7 @@
             @include('includes.search')
         </div>
         <div class="sidebar-box recent-blog-box mb-30">
-            <h4>Recent Blog</h4>
+            <h4>Последни публикации</h4>
             @foreach($posts as $post)
             <div class="recent-blog-items">
                 <div class="recent-blog mb-30">
@@ -21,7 +21,7 @@
              @endforeach
         </div>
         <div class="sidebar-box catagories-box mb-30">
-            <h4>Categories</h4>
+            <h4>Категории</h4>
             <ul>
                 @foreach($categories as $category)
                     <li>
@@ -31,7 +31,7 @@
             </ul>
         </div>
         <div class="sidebar-box tags-box mb-30">
-            <h4>All Tags</h4>
+            <h4>Всички етикети</h4>
             <ul>
                 @foreach($tags as $tag)
                     <li>
@@ -41,13 +41,33 @@
             </ul>
         </div>
         <div class="sidebar-box mb-30">
-            <h4>Follow On</h4>
+            <h4>Последвайте ме</h4>
             <div class="footer-social-links">
                 <ul class="d-flex justify-content-start">
-                    <li><a href="javascript:void(0)"><i class="lni lni-facebook-filled"></i></a></li>
-                    <li><a href="javascript:void(0)"><i class="lni lni-twitter-filled"></i></a></li>
-                    <li><a href="javascript:void(0)"><i class="lni lni-linkedin-original"></i></a></li>
-                    <li><a href="javascript:void(0)"><i class="lni lni-instagram-filled"></i></a></li>
+                 @if (!empty($settings->facebook))
+                    <li><a href="{{ $settings->facebook }}" target="_blank"><i class="lni lni-facebook-filled"></i></a></li>
+                  @endif
+                  @if (!empty($settings->instagram))  
+                    <li><a href="{{ $settings->instagram }}" target="_blank"><i class="lni lni-instagram-filled"></i></a></li>
+                  @endif  
+                  @if (!empty($settings->twitter))  
+                  <li><a href="{{ $settings->twitter }}" target="_blank"><i class="lni lni-twitter-filled"></i></a></li>
+                  @endif  
+                  @if (!empty($settings->tiktok))  
+                    <li><a href="{{ $settings->tiktok }}" target="_blank"><i class="lni lni-tiktok"></i></a></li>
+                  @endif  
+                  @if (!empty($settings->linkedin))  
+                    <li><a href="{{ $settings->linkedin }}" target="_blank"><i class="lni lni-linkedin-filled"></i></a></li>
+                  @endif  
+                  @if (!empty($settings->vkontakte))  
+                    <li><a href="{{ $settings->vkontakte }}" target="_blank"><i class="lni lni-vk"></i></a></li>
+                  @endif  
+                  @if (!empty($settings->instagram))  
+                    <li><a href="{{ $settings->instagram }}" target="_blank"><i class="lni lni-youtube"></i></a></li>
+                  @endif  
+                  @if (!empty($settings->skype))  
+                    <li><a href="{{ $settings->skype }}" target="_blank"><i class="lni lni-skype"></i></a></li>
+                  @endif  
                 </ul>
             </div>
         </div>
