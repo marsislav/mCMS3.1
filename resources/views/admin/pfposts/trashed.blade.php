@@ -27,17 +27,17 @@
                 </thead>
 
                 <tbody>
-                @if($portfolios->count() > 0)
-                    @foreach($portfolios as $portfolio)
+                @if($pfposts->count() > 0)
+                    @foreach($pfposts as $pfpost)
                         <tr>
-                            <td><img src="{{ $portfolio->featured }}" alt="{{ $portfolio->title }}" width="90px" height="50px"></td>
-                            <td>{{ $portfolio->title }}</td>
+                            <td><img src="{{ $pfpost->featured }}" alt="{{ $pfpost->title }}" width="90px" height="50px"></td>
+                            <td>{{ $pfpost->title }}</td>
                             <td>Edit</td>
                             <td>
-                                <a href="{{ route('portfolio.restore', ['id' => $portfolio->id]) }}" class="btn btn-xs btn-success">Restore</a>
+                                <a href="{{ route('pfpost.restore', ['id' => $pfpost->id]) }}" class="btn btn-xs btn-success">Restore</a>
                             </td>
                             <td>
-                                <a href="{{ route('portfolio.kill', ['id' => $portfolio->id]) }}" class="btn btn-xs btn-danger">Delete</a>
+                                <a href="{{ route('pfpost.kill', ['id' => $pfpost->id]) }}" class="btn btn-xs btn-danger">Delete</a>
                             </td>
                         </tr>
                     @endforeach
