@@ -3203,3 +3203,10 @@ background: linear-gradient(#3763eb 0%, #6f58e8 100%);
 .pb-225 {
   padding-bottom: 225px;
 }
+
+/*Custom*/
+hr.green {
+  height: 4px;
+  opacity: 1;
+  background: #1ABC9C;
+}

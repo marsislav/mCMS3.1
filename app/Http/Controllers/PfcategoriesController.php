@@ -38,10 +38,12 @@ class PfCategoriesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name'=>'required'
+            'name'=>'required',
+            'description'=>'nullable'
         ]);
         $pfcategory=new PfCategory;
         $pfcategory->name=$request->name;
+        $pfcategory->description=$request->description;
         $pfcategory->save();
         Session::flash('success', 'You successfully create the portfolio category.');
         return redirect()->route('pfcategories');
@@ -83,6 +85,7 @@ class PfCategoriesController extends Controller
         $pfcategory = PfCategory::find($id);
 
         $pfcategory->name = $request->name;
+        $pfcategory->description=$request->description;
 
         $pfcategory->save();
 

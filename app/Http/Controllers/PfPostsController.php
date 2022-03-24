@@ -44,6 +44,11 @@ class PfPostsController extends Controller
            'title'=>'required',
            'featured'=>'required',
            'content'=>'required',
+           'project_title'=>'required',
+           'client'=>'required',
+           'completed_at'=>'required',
+           'skills'=>'required',
+           'client_url'=>'required',
            'pfcategory_id'=>'required'
        ]);
 
@@ -56,6 +61,12 @@ class PfPostsController extends Controller
         $pfpost = PfPost::create([
             'title' => $request->title,
             'content' => $request->content,
+
+            'project_title' => $request->project_title,
+            'client' => $request->client,
+            'completed_at' => $request->completed_at,
+            'skills' => $request->skills,
+            'client_url' => $request->client_url,
             'featured' => 'uploads/portfolio/' . $featured_new_name,
             'pfcategory_id' => $request->pfcategory_id,
             'slug' => str_slug($request->title),
@@ -106,6 +117,11 @@ class PfPostsController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'content' => 'required',
+            'project_title'=>'required',
+            'client'=>'required',
+            'completed_at'=>'required',
+            'skills'=>'required',
+            'client_url'=>'required',
             'pfcategory_id' => 'required'
         ]);
 
@@ -125,6 +141,11 @@ class PfPostsController extends Controller
 
         $pfpost->title = $request->title;
         $pfpost->content = $request->content;
+        $pfpost->project_title = $request->project_title;
+        $pfpost->client = $request->client;
+        $pfpost->completed_at = $request->completed_at;
+        $pfpost->skills = $request->skills;
+        $pfpost->client_url = $request->client_url;
         $pfpost->pfcategory_id = $request->pfcategory_id;
 
         $pfpost->save();

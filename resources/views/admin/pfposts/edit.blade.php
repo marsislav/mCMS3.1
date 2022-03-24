@@ -16,6 +16,32 @@
                     <label for="title">Title</label>
                     <input type="text" name="title" class="form-control" value="{{ $pfpost->title }}">
                 </div>
+
+                <div class="form-group">
+                    <label for="project_title">Project Title (opional)</label>
+                    <input type="text" name="project_title" class="form-control" value="{{$pfpost->project_title}}">
+                </div>
+
+                <div class="form-group">
+                    <label for="completed_at">Completed at</label>
+                    <input type="text" name="completed_at" class="form-control" value="{{$pfpost->completed_at}}">
+                </div>
+
+                <div class="form-group">
+                    <label for="skills">Skills</label>
+                    <input type="text" name="skills" class="form-control" value="{{$pfpost->skills}}">
+                </div>
+
+                <div class="form-group">
+                    <label for="completed_at">Client</label>
+                    <input type="text" name="client" class="form-control" value="{{$pfpost->client}}">
+                </div>
+
+                <div class="form-group">
+                    <label for="client_url">Client URL</label>
+                    <input type="text" name="client_url" class="form-control" value="{{$pfpost->client_url}}">
+                </div>
+
                 <div class="form-group">
                     <label for="featured">Featured image</label>
                     <input type="file" name="featured" class="form-control">

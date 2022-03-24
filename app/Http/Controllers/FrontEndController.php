@@ -77,14 +77,16 @@ class FrontEndController extends Controller
     public function singlePfPost($slug)
     {
         $pfpost = PfPost::where('slug', $slug)->first();
-
+        $next_id = PfPost::where('id', '>', $pfpost->id)->min('id');
+        $prev_id = PfPost::where('id', '<', $pfpost->id)->max('id');
          
-
         return view('portfolio')->with('pfpost', $pfpost)
                            ->with('title', $pfpost->title)
                             ->with('pfcategories', PfCategory::take(5)->get())
                             ->with('pfposts', PfPost::orderBy('created_at', 'DESC')->paginate(4))
                             ->with('pages', Page::take(5)->get())
+                            ->with('next', PfPost::find($next_id))
+                            ->with('prev', PfPost::find($prev_id))
                             ->with('settings', Setting::first());
     }
 

@@ -94,6 +94,8 @@
                 </div>
             @endforeach
         </div>
+        <div class="description mb-60">{!!$pfcategory->description!!}</div>
+        
 </section>
 
 
@@ -126,7 +128,7 @@
     <i class="lni lni-arrow-up"></i>
 </a>
 <script src="{{ asset('app/js/jquery-2.1.4.min.js')}}"></script>
-<script src="{{ asset('app/js/bootstrap.bundle-5.0.0-beta1.min.js')}}"></script>
+<script src="{{ asset('app/js/bootstrap.bundle.min.js')}}"></script>
 <script src="{{ asset('app/js/contact-form.js')}}"></script>
 <script src="{{ asset('app/js/count-up.min.js')}}"></script>
 <script src="{{ asset('app/js/tiny-slider.js')}}"></script>
@@ -136,12 +138,6 @@
 <script src="{{ asset('app/js/imagesloaded.min.js')}}"></script>
 <script src="{{ asset('app/js/main.js')}}"></script>
 <script src="{{ asset('js/toastr.min.js') }}"></script>
-
-<script>
-    @if(Session::has('subscribed'))
-    toastr.success("{{ Session::get('subscribed') }}");
-    @endif
-</script>
 </body>
 </html>
 

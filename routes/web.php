@@ -6,6 +6,7 @@ Route::get('/', [
     'as' => 'index'
 ]);
 
+
 Route::get('/login', [
     'uses' => 'FrontEndController@index',
     'as' => 'index'
@@ -40,7 +41,7 @@ Route::get('/post/{slug}', [
     'uses' => 'FrontEndController@singlePost',
     'as' => 'post.single'
 ]);
-Route::get('/pfpost/{slug}', [
+Route::get('/portfolio-item/{slug}', [
     'uses' => 'FrontEndController@singlePfPost',
     'as' => 'pfpost.single'
 ]);
@@ -50,7 +51,7 @@ Route::get('/category/{id}', [
     'as' => 'category.single'
 ]);
 
-Route::get('/pfcategory/{id}', [
+Route::get('/portfolio/{id}', [
     'uses' => 'FrontEndController@pfcategory',
     'as' => 'pfcategory.single'
 ]);

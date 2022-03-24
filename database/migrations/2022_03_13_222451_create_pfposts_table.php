@@ -21,6 +21,11 @@ class CreatePfPostsTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->text('content');
+            $table->string('project_title');
+            $table->string('client');
+            $table->string('completed_at');
+            $table->string('skills');
+            $table->string('client_url');
             $table->integer('pfcategory_id');
             $table->string('featured');
             $table->softDeletes();

@@ -18,6 +18,8 @@ class CreatePfcategoriesTable extends Migration
         Schema::create('pfcategories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->text('description');
+
             $table->timestamps();
         });
     }

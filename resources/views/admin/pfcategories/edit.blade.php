@@ -17,6 +17,10 @@
                     <input type="text" name="name" value="{{ $pfcategory->name }}" class="form-control">
                 </div>
                 <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea name="description" id="content" cols="30" rows="10" class="form-control">{{ $pfcategory->description }}</textarea>
+                </div>
+                <div class="form-group">
                     <div class="text-center">
                         <button class="btn btn-success" type="submit">
                             Update portfolio category
@@ -26,4 +30,16 @@
             </form>
         </div>
     </div>
+@stop
+@section('styles')
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet">
+@stop
+
+@section('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#content').summernote();
+        });
+    </script>
 @stop

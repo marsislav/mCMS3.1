@@ -10,7 +10,8 @@ class PfPost extends Model
     use SoftDeletes;
 
     protected $fillable=[
-        'title','content', 'pfcategory_id', 'featured', 'slug'
+        'title','content', 'pfcategory_id', 'featured', 'slug', 'client','completed_at','skills',
+        'client_url', 'project_title'
     ];
 
     protected $dates=[
